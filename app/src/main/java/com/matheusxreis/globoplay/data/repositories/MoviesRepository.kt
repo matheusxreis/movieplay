@@ -8,6 +8,9 @@ class MoviesRepository(private val service: MoviesService) {
 
     public fun  getMovies():List<Movie> = this.service.getAllMovies();
 
+    public fun getMovieById(id: String):Movie? {
+        return service.getMovieById(id)
+    }
 
 
 

@@ -9,4 +9,8 @@ class MainActivityViewModel(
 
     public fun getMovies(): List<Movie> = moviesRepository.getMovies();
 
+    public fun getMovieById(id:String):Movie? {
+        return moviesRepository.getMovieById(id)
+    }
+
 }

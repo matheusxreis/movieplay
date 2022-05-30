@@ -1,33 +1,38 @@
 package com.matheusxreis.globoplay.ui.views
 
+import android.graphics.BlurMaskFilter
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.navigation.NavArgs
+import androidx.navigation.fragment.navArgs
 import com.matheusxreis.globoplay.R
+import com.matheusxreis.globoplay.data.entities.Movie
+import com.matheusxreis.globoplay.data.repositories.MoviesRepository
+import com.matheusxreis.globoplay.data.services.MoviesService
+import com.matheusxreis.globoplay.ui.viewmodels.MainActivityViewModel
+import com.squareup.picasso.Picasso
+import jp.wasabeef.blurry.Blurry
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BlankFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AboutFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    var moviesService: MoviesService = MoviesService()
+    var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
+    var viewModel: MainActivityViewModel = MainActivityViewModel(moviesRepository)
+
+
+    val args:AboutFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -38,23 +43,50 @@ class AboutFragment : Fragment() {
         return inflater.inflate(R.layout.about_fragment, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BlankFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            AboutFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var image: ImageView = view.findViewById(R.id.photo_movie);
+        var imageBg: ImageView = view.findViewById(R.id.photo_bg);
+
+        var movieId = args.movieId
+
+        val movie:Movie? = getMovieInfoById(movieId)
+
+        if(movie != null){
+            getImageURL(image, movie.urlImage)
+            getImageURL(imageBg, movie.urlImage)
+
+            try {
+                getImageBlur(view, imageBg)
+            }catch(err: Exception){
+                Toast.makeText(this.context, err.toString(), Toast.LENGTH_LONG).show()
+
+                Log.e("ERRORAQUI", err.toString())
             }
+        }
+
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+    fun getMovieInfoById(id: String): Movie? = viewModel.getMovieById(id)
+
+
+    fun getImageURL(image: ImageView, url:String){
+            Picasso.get().load(url).into(image)
+
+    }
+
+    fun getImageBlur(view:View, image: ImageView?){
+        if(image!= null) {
+            Blurry.with(this.requireContext()).capture(requireView()
+            ).into(image)
+        }
     }
 }

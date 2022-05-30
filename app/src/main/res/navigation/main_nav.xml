@@ -6,19 +6,6 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/aboutFragment"
-        android:name="com.matheusxreis.globoplay.ui.views.AboutFragment"
-        android:label="AboutFragment"
-        tools:layout="@layout/about_fragment">
-
-        <argument
-            android:name="movie"
-            app:argType="integer"
-            android:defaultValue="0"
-            />
-
-    </fragment>
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.matheusxreis.globoplay.ui.views.MainFragment"
         android:label="MainFragment"
@@ -27,6 +14,19 @@
             android:id="@+id/actionMainFragmentToAboutFragment"
             app:destination="@id/aboutFragment" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.matheusxreis.globoplay.ui.views.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/about_fragment">
+
+        <argument
+            android:name="movieId"
+            app:argType="string"
+            android:defaultValue="0"
+            />
 
     </fragment>
+
 </navigation>

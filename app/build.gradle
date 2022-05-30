@@ -66,4 +66,9 @@ dependencies {
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    }
+    //Blurry
+
+    implementation ("jp.wasabeef:blurry:4.0.1")
+
+
+}
