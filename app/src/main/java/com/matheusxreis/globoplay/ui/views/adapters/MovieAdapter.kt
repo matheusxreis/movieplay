@@ -17,7 +17,7 @@ import com.matheusxreis.globoplay.data.entities.Movie
 import com.squareup.picasso.Picasso
 import java.net.URL
 
-class MovieAdapter(val onImageClick: ()->Unit?):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     var data: List<Movie> = listOf(); private set
@@ -56,7 +56,7 @@ class MovieAdapter(val onImageClick: ()->Unit?):RecyclerView.Adapter<RecyclerVie
         fun bind(movie: Movie){
 
             image.setOnClickListener{
-                    onImageClick();
+                    onImageClick(movie.id);
             }
 
             title.text = movie.title

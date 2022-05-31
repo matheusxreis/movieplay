@@ -50,9 +50,10 @@ class MainFragment : Fragment() {
 
     private fun initRecyclerViews(view: View){
         //PAREI AQUI COM O SAFE ARGS //
-        val action = MainFragmentDirections.actionMainFragmentToAboutFragment("id01")
+        //val action = MainFragmentDirections.actionMainFragmentToAboutFragment("id01")
         //
-        this.movieAdapter = MovieAdapter{
+        this.movieAdapter = MovieAdapter{it ->
+            val action = MainFragmentDirections.actionMainFragmentToAboutFragment(it)
             Navigation.findNavController(view).navigate(action);
         };
 
