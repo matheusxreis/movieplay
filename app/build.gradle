@@ -45,7 +45,10 @@ dependencies {
 
     //picasso
     implementation 'com.squareup.picasso:picasso:2.8'
-
+    //picasso transformations
+    implementation 'jp.wasabeef:picasso-transformations:2.4.0'
+    // If you want to use the GPU Filters
+    implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
     //nav
     def nav_version = "2.4.2"
 

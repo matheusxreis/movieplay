@@ -18,7 +18,7 @@ import com.matheusxreis.globoplay.data.repositories.MoviesRepository
 import com.matheusxreis.globoplay.data.services.MoviesService
 import com.matheusxreis.globoplay.ui.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
-import jp.wasabeef.blurry.Blurry
+import jp.wasabeef.picasso.transformations.BlurTransformation
 
 
 class AboutFragment : Fragment() {
@@ -54,11 +54,11 @@ class AboutFragment : Fragment() {
         val movie:Movie? = getMovieInfoById(movieId)
 
         if(movie != null){
-            getImageURL(image, movie.urlImage)
-            getImageURL(imageBg, movie.urlImage)
+            setImageURLByUrl(image, movie.urlImage)
+          //  setImageURLByUrl(imageBg, movie.urlImage)
 
             try {
-                getImageBlur(view, imageBg)
+                setImageBlurByUrl(movie.urlImage, imageBg)
             }catch(err: Exception){
                 Toast.makeText(this.context, err.toString(), Toast.LENGTH_LONG).show()
 
@@ -78,15 +78,19 @@ class AboutFragment : Fragment() {
     fun getMovieInfoById(id: String): Movie? = viewModel.getMovieById(id)
 
 
-    fun getImageURL(image: ImageView, url:String){
+    fun setImageURLByUrl(image: ImageView, url:String){
             Picasso.get().load(url).into(image)
 
     }
 
-    fun getImageBlur(view:View, image: ImageView?){
+    fun setImageBlurByUrl(url: String, image: ImageView?){
         if(image!= null) {
-            Blurry.with(this.requireContext()).capture(requireView()
-            ).into(image)
+            Picasso.get()
+                .load(url)
+                .transform(BlurTransformation(context, 25, 4))
+                .into(image)
+//            Blurry.with(this.requireContext()).capture(requireView()
+//            ).into(image)
         }
     }
 }
