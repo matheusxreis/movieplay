@@ -28,5 +28,11 @@
             />
 
     </fragment>
+    <fragment
+        android:id="@+id/myListFragment"
+        android:name="com.matheusxreis.globoplay.ui.views.MyListFragment"
+        android:label="MyListFragment"
+        tools:layout="@layout/fragment_my_list"
+        />
 
 </navigation>
