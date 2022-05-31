@@ -50,7 +50,6 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
     }
 
     inner class DataListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        private val title = itemView.findViewById<TextView>(R.id.item_title);
         private val image = itemView.findViewById<ImageView>(R.id.item_image);
 
         fun bind(movie: Movie){
@@ -58,8 +57,6 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
             image.setOnClickListener{
                     onImageClick(movie.id);
             }
-
-            title.text = movie.title
             Picasso.get().load(movie.urlImage).into(image)
 
             }

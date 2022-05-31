@@ -16,5 +16,6 @@
     <color name="primary_text">#FFFFFF</color>
     <color name="primary">#363636</color>
     <color name="secondary">#454544</color>
+    <color name="opacity_secondary">#BB454544</color>
 
 </resources>

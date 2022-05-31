@@ -78,7 +78,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/container_content"
         android:background="@color/opacity_black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         >
 
         <TextView
@@ -144,11 +144,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="222222dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/details_movies"
-        android:background="@color/secondary"
+        android:background="@color/opacity_secondary"
         />
 
 
