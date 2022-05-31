@@ -2,4 +2,6 @@
     <string name="app_name">globoplay</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="about_fragment_description_movie">Marla Grayson é uma renomada guardiã legal que gosta de ficar com pessoas idosas e ricas. Às custas da última, ela leva uma confortável vida de luxo. Quando ela pensa ter encontrado uma nova vítima perfeita, descobre que a mesma guarda segredos perigosos.</string>
 </resources>

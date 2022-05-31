@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
@@ -49,6 +50,10 @@ class AboutFragment : Fragment() {
         var image: ImageView = view.findViewById(R.id.photo_movie);
         var imageBg: ImageView = view.findViewById(R.id.photo_bg);
 
+        var titleMovie: TextView = view.findViewById(R.id.title_movie);
+        var genMovie: TextView = view.findViewById(R.id.gen_movie);
+        var description: TextView = view.findViewById(R.id.description_movie)
+
         var movieId = args.movieId
 
         val movie:Movie? = getMovieInfoById(movieId)
@@ -56,14 +61,11 @@ class AboutFragment : Fragment() {
         if(movie != null){
             setImageURLByUrl(image, movie.urlImage)
           //  setImageURLByUrl(imageBg, movie.urlImage)
+            setImageBlurByUrl(movie.urlImage, imageBg)
+            titleMovie.text = movie.title
+            genMovie.text = movie.technicalSheet.gen[0]
+            description.text = movie.description
 
-            try {
-                setImageBlurByUrl(movie.urlImage, imageBg)
-            }catch(err: Exception){
-                Toast.makeText(this.context, err.toString(), Toast.LENGTH_LONG).show()
-
-                Log.e("ERRORAQUI", err.toString())
-            }
         }
 
 

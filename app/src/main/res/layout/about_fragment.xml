@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.views.MainActivity"
     android:id="@+id/main_activity"
-    android:padding="2dp">
+
+    android:background="@color/black">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -16,13 +17,13 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="270dp"
+        android:layout_height="280dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/photo_bg"
-        tools:src="@tools:sample/backgrounds/scenic"
-        android:scaleType="center"
+        tools:src="@drawable/i_cara_a_lot"
+        android:scaleType="centerCrop"
 
         />
 
@@ -34,8 +35,120 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/photo_movie"
-        tools:src="@tools:sample/backgrounds/scenic"
+        tools:src="@drawable/i_cara_a_lot"
         android:scaleType="fitXY"
+        android:outlineAmbientShadowColor="@color/black"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Filme"
+        android:fontFamily="@font/roboto"
+        app:layout_constraintTop_toBottomOf="@id/title_movie"
+        app:layout_constraintStart_toStartOf="@id/title_movie"
+        app:layout_constraintEnd_toEndOf="@id/title_movie"
+        android:textColor="@color/secondary_text"
+        android:textSize="15dp"
+        android:id="@+id/gen_movie"
+
+        />
+
+    <TextView
+        android:id="@+id/title_movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:shadowColor="@color/secondary_text"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:textColor="@color/white"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="@id/photo_movie"
+        app:layout_constraintStart_toStartOf="@id/photo_movie"
+        app:layout_constraintTop_toBottomOf="@id/photo_movie"
+        tools:text="I Care A Lot" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_movie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/container_content"
+        android:background="@color/opacity_black"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="34dp"
+        android:paddingTop="10dp"
+        android:id="@+id/description_movie"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/roboto_light"
+        tools:text="@string/about_fragment_description_movie"
+        android:textSize="18dp"
+        android:textColor="@color/primary_text"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+    android:layout_width="190dp"
+    android:layout_height="70dp"
+    android:backgroundTint="@color/white"
+    android:text="Assista"
+    android:textColor="@color/secondary_text"
+    android:fontFamily="@font/roboto_bold"
+    app:layout_constraintTop_toBottomOf="@id/container_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toStartOf="@id/favorites_button"
+        android:id="@+id/watch_button"
+
+        />
+    <com.google.android.material.button.MaterialButton
+    android:layout_width="190dp"
+    android:layout_height="70dp"
+    android:backgroundTint="@color/black"
+    android:text="Minha lista"
+    app:strokeColor="@color/secondary_text"
+    app:strokeWidth="2dp"
+    android:textColor="@color/secondary_text"
+
+    android:fontFamily="@font/roboto_bold"
+    app:layout_constraintTop_toBottomOf="@id/container_content"
+    app:layout_constraintStart_toEndOf="@id/watch_button"
+    app:layout_constraintEnd_toEndOf="@id/container_content"
+    android:id="@+id/favorites_button"
+    />
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="Detalhes"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        android:paddingVertical="24dp"
+        app:layout_constraintTop_toBottomOf="@id/watch_button"
+        app:layout_constraintStart_toStartOf="@id/watch_button"
+        android:textAllCaps="true"
+       android:id="@+id/details_movies"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/details_movies"
+        android:background="@color/secondary"
         />
 
 
