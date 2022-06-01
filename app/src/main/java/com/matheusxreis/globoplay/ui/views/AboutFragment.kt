@@ -52,7 +52,13 @@ class AboutFragment : Fragment() {
 
         var titleMovie: TextView = view.findViewById(R.id.title_movie);
         var genMovie: TextView = view.findViewById(R.id.gen_movie);
-        var description: TextView = view.findViewById(R.id.description_movie)
+        var description: TextView = view.findViewById(R.id.description_movie);
+
+
+        var textOriginalTitle:TextView = view.findViewById(R.id.text_original_title);
+        var textGens:TextView = view.findViewById(R.id.text_gens);
+        var textProductionYear:TextView = view.findViewById(R.id.text_year_production);
+        var textCountry:TextView = view.findViewById(R.id.text_country)
 
         var movieId = args.movieId
 
@@ -64,7 +70,12 @@ class AboutFragment : Fragment() {
             setImageBlurByUrl(movie.urlImage, imageBg)
             titleMovie.text = movie.title
             genMovie.text = movie.technicalSheet.gen[0]
-            description.text = movie.description
+            description.text = movie.description;
+
+            textOriginalTitle.text = movie.technicalSheet.originalName;
+            textGens.text = movie.technicalSheet.gen.map { it -> it }.toString();
+            textProductionYear.text = movie.technicalSheet.productionYear;
+            textCountry.text = movie.technicalSheet.country;
 
         }
 

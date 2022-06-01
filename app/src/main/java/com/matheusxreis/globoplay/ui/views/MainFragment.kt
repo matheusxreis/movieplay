@@ -55,6 +55,8 @@ class MainFragment : Fragment() {
         this.movieAdapter = MovieAdapter{it ->
             val action = MainFragmentDirections.actionMainFragmentToAboutFragment(it)
             Navigation.findNavController(view).navigate(action);
+
+
         };
 
         val recyclerMovie: RecyclerView = view.findViewById(R.id.movie_list)
