@@ -7,7 +7,6 @@ class MoviesService {
 
     val tec1 = TechnicalSheet("The Batman", listOf("Drama, Aventura"), 22, "2010", "USA", "a", "a")
     val tec2 = TechnicalSheet("I Care a Lot", listOf("Drama, Comédia"), 22, "2010", "USA", "a", "a")
-
     val tec3 = TechnicalSheet("Logan", listOf("Drama, Suspense"), 22, "2010", "USA", "a", "a")
 
 

@@ -69,9 +69,10 @@ dependencies {
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    //Blurry
+    //Retrofit
 
-    implementation ("jp.wasabeef:blurry:4.0.1")
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
 
 }

@@ -3,6 +3,8 @@ package com.matheusxreis.globoplay.ui.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -23,8 +25,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var movieAdapter: MovieAdapter;
     var moviesService: MoviesService = MoviesService()
     var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
-    var viewModel: MainActivityViewModel = MainActivityViewModel(moviesRepository)
 
+
+    //var viewModel: ViewModel = ViewModelProvider(this).get(MainActivityViewModel(moviesRepository)::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,10 +38,6 @@ class MainActivity : AppCompatActivity() {
         val navController: NavController? = navHostFragment?.findNavController()
 
         if(navController!=null) { bottomNavigationView.setupWithNavController(navController)}
-
-
-
-
 
     }
 

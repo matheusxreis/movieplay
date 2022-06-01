@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +24,11 @@ class MainFragment : Fragment() {
     lateinit var movieAdapter: MovieAdapter;
     var moviesService: MoviesService = MoviesService()
     var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
-    var viewModel: MainActivityViewModel = MainActivityViewModel(moviesRepository)
+    lateinit var viewModel: MainActivityViewModel;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
+
 
 
 
@@ -41,6 +44,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
 
+        viewModel = ViewModelProvider(this@MainFragment).get(MainActivityViewModel()::class.java)
 
         initRecyclerViews(this@MainFragment.requireView());
         setDataInRecyclerView();

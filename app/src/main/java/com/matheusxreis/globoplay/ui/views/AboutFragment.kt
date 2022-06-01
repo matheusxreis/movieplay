@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavArgs
 import androidx.navigation.fragment.navArgs
 import com.matheusxreis.globoplay.R
@@ -26,8 +27,9 @@ class AboutFragment : Fragment() {
 
     var moviesService: MoviesService = MoviesService()
     var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
-    var viewModel: MainActivityViewModel = MainActivityViewModel(moviesRepository)
+   // var viewModel: MainActivityViewModel = MainActivityViewModel()
 
+    val viewModel: MainActivityViewModel by activityViewModels()
 
     val args:AboutFragmentArgs by navArgs()
 
