@@ -14,13 +14,14 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
+import com.matheusxreis.globoplay.data.utils.Constants
 import com.squareup.picasso.Picasso
 import java.net.URL
 
 class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-    var data: List<Movie> = listOf(); private set
+    var data: List<Movie> = listOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -35,7 +36,7 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+        Log.d("here_setitems222222", data.toString())
         when(holder){
             is DataListViewHolder -> {
                 holder.bind(data[position])
@@ -46,7 +47,9 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
     override fun getItemCount(): Int = data.size
 
     fun setItems(data: List<Movie>){
+        Log.d("here_setitems", data.toString())
         this.data = data
+        Log.d("here_data", data.toString())
     }
 
     inner class DataListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -57,8 +60,8 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
             image.setOnClickListener{
                     onImageClick(movie.id);
             }
-            Picasso.get().load(movie.urlImage).into(image)
-
+            Picasso.get().load(Constants.imageBaseUrl + movie.urlImage).into(image)
+            Log.d("here-picasso", Constants.imageBaseUrl + movie.urlImage)
             }
 
 

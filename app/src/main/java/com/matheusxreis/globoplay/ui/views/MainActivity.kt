@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     //
     lateinit var movieAdapter: MovieAdapter;
-    var moviesService: MoviesService = MoviesService()
-    var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
+    var moviesRepository: MoviesRepository = MoviesRepository()
 
 
     //var viewModel: ViewModel = ViewModelProvider(this).get(MainActivityViewModel(moviesRepository)::class.java)

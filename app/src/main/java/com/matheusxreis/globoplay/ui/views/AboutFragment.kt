@@ -25,8 +25,7 @@ import jp.wasabeef.picasso.transformations.BlurTransformation
 
 class AboutFragment : Fragment() {
 
-    var moviesService: MoviesService = MoviesService()
-    var moviesRepository: MoviesRepository = MoviesRepository(moviesService)
+    var moviesRepository: MoviesRepository = MoviesRepository()
    // var viewModel: MainActivityViewModel = MainActivityViewModel()
 
     val viewModel: MainActivityViewModel by activityViewModels()
@@ -71,13 +70,13 @@ class AboutFragment : Fragment() {
           //  setImageURLByUrl(imageBg, movie.urlImage)
             setImageBlurByUrl(movie.urlImage, imageBg)
             titleMovie.text = movie.title
-            genMovie.text = movie.technicalSheet.gen[0]
+            genMovie.text = movie.title
             description.text = movie.description;
 
-            textOriginalTitle.text = movie.technicalSheet.originalName;
-            textGens.text = movie.technicalSheet.gen.map { it -> it }.toString();
-            textProductionYear.text = movie.technicalSheet.productionYear;
-            textCountry.text = movie.technicalSheet.country;
+            textOriginalTitle.text = movie.originalTitle
+            textGens.text = movie.title
+            textProductionYear.text = movie.productionYear
+            textCountry.text = movie.title
 
         }
 
