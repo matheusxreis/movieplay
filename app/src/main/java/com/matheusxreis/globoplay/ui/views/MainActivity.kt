@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     //
     lateinit var movieAdapter: MovieAdapter;
     var moviesRepository: MoviesRepository = MoviesRepository()
+    lateinit var viewModel: MainActivityViewModel;
 
 
     //var viewModel: ViewModel = ViewModelProvider(this).get(MainActivityViewModel(moviesRepository)::class.java)
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view);
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment)
         val navController: NavController? = navHostFragment?.findNavController()
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel()::class.java)
 
         if(navController!=null) { bottomNavigationView.setupWithNavController(navController)}
 

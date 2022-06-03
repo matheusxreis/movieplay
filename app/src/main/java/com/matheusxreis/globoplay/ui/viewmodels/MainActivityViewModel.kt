@@ -15,23 +15,21 @@ import kotlinx.coroutines.launch
 class MainActivityViewModel():ViewModel() {
      var moviesRepository: MoviesRepository = MoviesRepository()
 
-      var movies:MutableLiveData<List<Movie>>;
+      var movies:MutableLiveData<List<Movie>> = MutableLiveData()
 
-    init {
-        movies = MutableLiveData()
-    }
     public fun fetchMovies() {
         viewModelScope.launch {
             val response: TopRatedMovie = moviesRepository.getMovies();
 
             Log.d("HERE", response.results[0].urlImage.toString())
 
-            movies.postValue(response.results)
-
+            movies.value = response.results
         };
+
 
     }
     public fun getMovieById(id: String): Movie? {
-        return moviesRepository.getMovieById(id)
+    return movies.value?.find { it -> it.id === id};
+    //return moviesRepository.getMovieById(id)
     }
 }

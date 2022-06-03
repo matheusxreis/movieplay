@@ -48,8 +48,13 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
 
     fun setItems(data: List<Movie>){
         Log.d("here_setitems", data.toString())
-        this.data = data
+        if(this.data.isEmpty()){
+            this.data = data
+            notifyDataSetChanged()
+        }
+
         Log.d("here_data", data.toString())
+
     }
 
     inner class DataListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -58,7 +63,8 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
         fun bind(movie: Movie){
 
             image.setOnClickListener{
-                    onImageClick(movie.id);
+                Log.d("movie.id", movie.id)
+                 onImageClick(movie.id);
             }
             Picasso.get().load(Constants.imageBaseUrl + movie.urlImage).into(image)
             Log.d("here-picasso", Constants.imageBaseUrl + movie.urlImage)

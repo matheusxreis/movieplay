@@ -26,8 +26,8 @@ import com.matheusxreis.globoplay.ui.views.adapters.MovieAdapter
 class MainFragment : Fragment() {
 
     lateinit var movieAdapter: MovieAdapter;
-    var moviesRepository: MoviesRepository = MoviesRepository()
-    lateinit var viewModel: MainActivityViewModel;
+    val viewModel: MainActivityViewModel by activityViewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = ViewModelProvider(this@MainFragment).get(MainActivityViewModel()::class.java)
+        //viewModel = ViewModelProvider(this.activity.).get(MainActivityViewModel()::class.java)
 
 
         initRecyclerViews(this@MainFragment.requireView());
@@ -82,6 +82,7 @@ class MainFragment : Fragment() {
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             Log.d("Livedata", it.toString())
              movieAdapter.setItems(it)
+            movieAdapter.notifyDataSetChanged()
         })
 
     }
