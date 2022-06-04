@@ -90,7 +90,7 @@ class AboutFragment : Fragment() {
                 textCountry
             )
 
-        }
+        }else{goBack()}
 
         Log.e("MOVIEEEEEE", movie.toString())
 

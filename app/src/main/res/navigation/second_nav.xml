@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/secondary_nav"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/myListFragment2">
+
+    <fragment
+        android:id="@+id/myListFragment2"
+        android:name="com.matheusxreis.globoplay.ui.views.MyListFragment"
+        android:label="MyListFragment"
+        tools:layout="@layout/fragment_my_list"
+        />
+</navigation>

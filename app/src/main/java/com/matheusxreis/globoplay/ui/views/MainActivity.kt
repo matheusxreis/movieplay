@@ -34,11 +34,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav_view);
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment)
-        val navController: NavController? = navHostFragment?.findNavController()
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_host_fragment);
+        val navHostFragment2 = supportFragmentManager.findFragmentById(R.id.secondary_host_fragment);
+        val navController: NavController? = navHostFragment?.findNavController();
+        val navController2: NavController? = navHostFragment2?.findNavController()
         viewModel = ViewModelProvider(this).get(MainActivityViewModel()::class.java)
 
         if(navController!=null) { bottomNavigationView.setupWithNavController(navController)}
+        if(navController2!=null) { bottomNavigationView.setupWithNavController(navController2)}
+
 
     }
 

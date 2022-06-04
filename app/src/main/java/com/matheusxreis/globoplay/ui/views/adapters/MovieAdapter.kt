@@ -64,7 +64,7 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
         private var load = itemView.findViewById<ContentLoadingProgressBar>(R.id.loading_movie)
 
         fun bind(movie: Movie){
-           // load.visibility = View.VISIBLE;
+           load.visibility = View.VISIBLE;
 
             image.setOnClickListener{
                 Log.d("movie.id", movie.id)
@@ -72,8 +72,10 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
             }
             Picasso.get().load(Constants.imageBaseUrl + movie.urlImage).into(image)
 
-            Log.d("here-picasso", Constants.imageBaseUrl + movie.urlImage)
+            Log.d("here-picasso", Constants.imageBaseUrl + movie.urlImage);
+            load.visibility = View.INVISIBLE;
             }
+
 
 
     }
