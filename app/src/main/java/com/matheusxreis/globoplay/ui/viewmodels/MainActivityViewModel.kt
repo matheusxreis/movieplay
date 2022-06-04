@@ -15,7 +15,10 @@ import kotlinx.coroutines.launch
 class MainActivityViewModel():ViewModel() {
      var moviesRepository: MoviesRepository = MoviesRepository()
 
-      var movies:MutableLiveData<List<Movie>> = MutableLiveData()
+      var movies:MutableLiveData<List<Movie>> = MutableLiveData();
+
+      var liked: MutableList<Movie> = mutableListOf()
+      var likedMovies: MutableLiveData<List<Movie>> = MutableLiveData()
 
     public fun fetchMovies() {
         viewModelScope.launch {
@@ -33,4 +36,12 @@ class MainActivityViewModel():ViewModel() {
     return movies.value?.find { it -> it.id === id};
     //return moviesRepository.getMovieById(id)
     }
+
+    public fun likeMovie(id:String){
+        var movie = movies.value?.find { it -> it.id === id};
+
+        liked.add(movie as Movie)
+        likedMovies.postValue(liked)
+
+        }
 }

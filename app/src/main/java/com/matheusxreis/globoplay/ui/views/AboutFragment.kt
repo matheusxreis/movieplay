@@ -17,6 +17,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavArgs
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.button.MaterialButton
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.data.repositories.MoviesRepository
@@ -66,10 +67,8 @@ class AboutFragment : Fragment() {
         var textCountry:TextView = view.findViewById(R.id.text_country)
 
         var backButton:ImageButton = view.findViewById(R.id.back_button)
+        var likeButton: MaterialButton = view.findViewById(R.id.favorites_button)
 
-        backButton.setOnClickListener{
-            goBack()
-        }
 
         var movieId = args.movieId
 
@@ -92,7 +91,15 @@ class AboutFragment : Fragment() {
 
         }else{goBack()}
 
-        Log.e("MOVIEEEEEE", movie.toString())
+
+
+        backButton.setOnClickListener{
+            goBack()
+        }
+        likeButton.setOnClickListener{
+            viewModel.likeMovie(movieId)
+        }
+
 
     }
 
