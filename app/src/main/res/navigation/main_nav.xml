@@ -4,7 +4,7 @@
     android:id="@+id/my_nav_graph"
     app:startDestination="@id/main_nav">
 
-    <include app:graph="@navigation/main_nav" />
-    <include app:graph="@navigation/secondary_nav" />
+    <include app:graph="@navigation/first_nav" />
+    <include app:graph="@navigation/second_nav" />
 
 </navigation>

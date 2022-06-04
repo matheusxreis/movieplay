@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:id="@+id/main_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/my_nav_graph"
+        app:navGraph="@navigation/main_nav"
         app:defaultNavHost="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
