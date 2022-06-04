@@ -29,6 +29,7 @@ class MainActivityViewModel():ViewModel() {
 
     }
     public fun getMovieById(id: String): Movie? {
+        Log.d("MOVIE_id", id)
     return movies.value?.find { it -> it.id === id};
     //return moviesRepository.getMovieById(id)
     }

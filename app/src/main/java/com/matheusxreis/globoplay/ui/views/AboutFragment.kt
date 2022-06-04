@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavArgs
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
@@ -63,6 +65,12 @@ class AboutFragment : Fragment() {
         var textProductionYear:TextView = view.findViewById(R.id.text_year_production);
         var textCountry:TextView = view.findViewById(R.id.text_country)
 
+        var backButton:ImageButton = view.findViewById(R.id.back_button)
+
+        backButton.setOnClickListener{
+            goBack()
+        }
+
         var movieId = args.movieId
 
         val movie:Movie? = getMovieInfoById(movieId)
@@ -84,8 +92,8 @@ class AboutFragment : Fragment() {
 
         }
 
-        viewModel.fetchMovies()
-        Log.d("oioioiwaa", viewModel.movies.value.toString())
+        Log.e("MOVIEEEEEE", movie.toString())
+
     }
 
 
@@ -134,5 +142,10 @@ class AboutFragment : Fragment() {
 //            Blurry.with(this.requireContext()).capture(requireView()
 //            ).into(image)
         }
+    }
+
+    fun goBack(){
+        val action = AboutFragmentDirections.actionAboutFragmentToMainFragment()
+        Navigation.findNavController(this.requireView()).navigate(action)
     }
 }

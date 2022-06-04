@@ -8,8 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.widget.ContentLoadingProgressBar
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusxreis.globoplay.R
@@ -48,10 +50,10 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
 
     fun setItems(data: List<Movie>){
         Log.d("here_setitems", data.toString())
-        if(this.data.isEmpty()){
+
             this.data = data
             notifyDataSetChanged()
-        }
+
 
         Log.d("here_data", data.toString())
 
@@ -59,14 +61,17 @@ class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<Re
 
     inner class DataListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         private val image = itemView.findViewById<ImageView>(R.id.item_image);
+        private var load = itemView.findViewById<ContentLoadingProgressBar>(R.id.loading_movie)
 
         fun bind(movie: Movie){
+           // load.visibility = View.VISIBLE;
 
             image.setOnClickListener{
                 Log.d("movie.id", movie.id)
                  onImageClick(movie.id);
             }
             Picasso.get().load(Constants.imageBaseUrl + movie.urlImage).into(image)
+
             Log.d("here-picasso", Constants.imageBaseUrl + movie.urlImage)
             }
 

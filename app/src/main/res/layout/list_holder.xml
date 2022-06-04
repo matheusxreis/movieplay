@@ -20,4 +20,15 @@
             android:scaleType="fitXY"
             android:id="@+id/item_image"
                 />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/loading_movie"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            style="@android:style/Widget.ProgressBar.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+                />
 </androidx.constraintlayout.widget.ConstraintLayout>

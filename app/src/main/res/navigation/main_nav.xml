@@ -21,6 +21,11 @@
         android:label="AboutFragment"
         tools:layout="@layout/about_fragment">
 
+        <action
+            android:id="@+id/actionAboutFragmentToMainFragment"
+            app:destination="@id/mainFragment"
+            />
+
         <argument
             android:name="movieId"
             app:argType="string"
