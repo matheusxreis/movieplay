@@ -5,11 +5,19 @@ import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.data.entities.TopRatedMovie
 import retrofit2.Call
 import retrofit2.http.GET
+import io.github.cdimascio.dotenv.dotenv
+import retrofit2.http.Query
+
+
 
 interface MoviesService {
 
-    @GET("movie/top_rated?api_key=21e949028c69e031512666d316287784&language=pt-BR&page=1")
-    suspend fun getAllMovies(): TopRatedMovie
+    @GET("movie/top_rated")
+    suspend fun getAllMovies(
+        @Query("api_key") apikey: String,
+        @Query("language")language: String,
+        @Query("page")page:String
+    ): TopRatedMovie
 
     @GET("/posts")
     fun getMovieById(): Movie
