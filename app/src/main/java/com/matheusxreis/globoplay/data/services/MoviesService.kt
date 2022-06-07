@@ -21,6 +21,14 @@ interface MoviesService {
 
     @GET("/posts")
     fun getMovieById(): Movie
+
+
+    @GET("/tv/top_rated")
+    suspend fun getAllSeries(
+        @Query("api_key") apikey:String,
+        @Query("language") language: String,
+        @Query("page") page: String
+    )
 }
 
 

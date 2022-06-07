@@ -57,9 +57,7 @@ class MainFragment : Fragment() {
 
 
     private fun initRecyclerViews(view: View){
-        //PAREI AQUI COM O SAFE ARGS //
-        //val action = MainFragmentDirections.actionMainFragmentToAboutFragment("id01")
-        //
+
         this.movieAdapter = MovieAdapter{it ->
             val action = MainFragmentDirections.actionMainFragmentToAboutFragment(it)
             Navigation.findNavController(view).navigate(action);
@@ -69,6 +67,14 @@ class MainFragment : Fragment() {
 
         val recyclerMovie: RecyclerView = view.findViewById(R.id.movie_list)
         recyclerMovie.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = movieAdapter
+        }
+
+
+        val recyclerSerie: RecyclerView = view.findViewById(R.id.serie_list)
+
+        recyclerSerie.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = movieAdapter
         }

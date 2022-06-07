@@ -61,6 +61,31 @@
 
         />
 
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/movie_list"
+        app:layout_constraintStart_toStartOf="@id/title_movies"
+        android:text="Séries:"
+        android:textColor="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="19dp"
+         android:id="@+id/title_series"
+        />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_series"
+        app:layout_constraintStart_toStartOf="@id/title_series"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:listitem="@layout/list_holder"
+        android:id="@+id/serie_list"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
