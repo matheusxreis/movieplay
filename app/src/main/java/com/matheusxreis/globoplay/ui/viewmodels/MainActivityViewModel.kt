@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matheusxreis.globoplay.data.dtos.MovieDTO
 import com.matheusxreis.globoplay.data.entities.Movie
+import com.matheusxreis.globoplay.data.entities.Serie
 import com.matheusxreis.globoplay.data.entities.TopRatedMovie
 import com.matheusxreis.globoplay.data.repositories.MoviesRepository
 import com.matheusxreis.globoplay.data.repositories.SeriesRepository
@@ -20,7 +21,7 @@ class MainActivityViewModel():ViewModel() {
 
 
       var movies:MutableLiveData<List<Movie>> = MutableLiveData();
-      var series:MutableLiveData<List<Any>> = MutableLiveData()
+      var series:MutableLiveData<List<Serie>> = MutableLiveData()
 
       var liked: MutableList<Movie> = mutableListOf()
       var likedMovies: MutableLiveData<List<Movie>> = MutableLiveData()
@@ -38,8 +39,7 @@ class MainActivityViewModel():ViewModel() {
     public fun fetchSeries(){
         viewModelScope.launch {
             val response = seriesRepository.getSeries();
-
-           // series.value = response
+            series.value = response
         }
     }
 

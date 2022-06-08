@@ -83,13 +83,18 @@ class MainFragment : Fragment() {
 
     private fun setDataInRecyclerView(){
 
-        viewModel.fetchMovies()
+        viewModel.fetchMovies();
+        viewModel.fetchSeries();
 
         viewModel.movies.observe(viewLifecycleOwner, Observer {
             Log.d("Livedata", it.toString())
              movieAdapter.setItems(it)
             movieAdapter.notifyDataSetChanged()
         })
+
+//        viewModel.series.observe(viewLifecycleOwner, Observer {
+//
+//        })
 
     }
 
