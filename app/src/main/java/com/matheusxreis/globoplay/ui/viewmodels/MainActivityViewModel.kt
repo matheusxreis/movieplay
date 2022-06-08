@@ -57,4 +57,8 @@ class MainActivityViewModel():ViewModel() {
         likedMovies.postValue(liked)
 
         }
+
+    public fun getSerieById(id: String):Serie? {
+        return series.value?.find { it -> it.id === id};
+    }
 }

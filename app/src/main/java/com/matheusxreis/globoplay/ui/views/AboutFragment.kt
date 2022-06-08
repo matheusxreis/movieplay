@@ -20,6 +20,7 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.button.MaterialButton
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
+import com.matheusxreis.globoplay.data.entities.Serie
 import com.matheusxreis.globoplay.data.repositories.MoviesRepository
 import com.matheusxreis.globoplay.data.services.MoviesService
 import com.matheusxreis.globoplay.data.utils.Constants
@@ -73,10 +74,11 @@ class AboutFragment : Fragment() {
         var movieId = args.movieId
 
         val movie:Movie? = getMovieInfoById(movieId)
+        val serie: Serie? = getSerieInfoById(movieId)
 
         if(movie != null){
 
-            setData(
+            setMovieData(
                 movie,
                 image,
                 imageBg,
@@ -89,7 +91,25 @@ class AboutFragment : Fragment() {
                 textCountry
             )
 
-        }else{goBack()}
+        }
+        else if(serie != null){
+                setSerieData(
+                    serie,
+                    image,
+                    imageBg,
+                    titleMovie,
+                    genMovie,
+                    description,
+                    textOriginalTitle,
+                    textGens,
+                    textProductionYear,
+                    textCountry
+                )
+
+        }
+        else{
+            goBack()
+        }
 
 
 
@@ -98,6 +118,7 @@ class AboutFragment : Fragment() {
         }
         likeButton.setOnClickListener{
             viewModel.likeMovie(movieId)
+            //falta arrumar aqui, o método de like do view model
         }
 
 
@@ -110,7 +131,7 @@ class AboutFragment : Fragment() {
         Log.d("kokokook", "OOOOOOI")
     }
 
-    fun setData(movie:Movie,
+    fun setMovieData(movie:Movie,
     image: ImageView,
     imageBg:ImageView,
     titleMovie:TextView,
@@ -133,7 +154,32 @@ class AboutFragment : Fragment() {
         textCountry.text = movie.title
     }
 
+    fun setSerieData(serie:Serie,
+                     image: ImageView,
+                     imageBg:ImageView,
+                     titleMovie:TextView,
+                     genMovie:TextView,
+                     description:TextView,
+                     textOriginalTitle:TextView,
+                     textGens:TextView,
+                     textProductionYear:TextView,
+                     textCountry:TextView){
+        setImageURLByUrl(image, serie.urlImage)
+        //  setImageURLByUrl(imageBg, movie.urlImage)
+        setImageBlurByUrl(serie.urlImage, imageBg)
+        titleMovie.text = serie.title
+        genMovie.text = serie.title
+        description.text = serie.description;
+
+        textOriginalTitle.text = serie.originalTitle
+        textGens.text = serie.title
+        textProductionYear.text = serie.productionYear
+        textCountry.text = serie.title
+
+    }
     fun getMovieInfoById(id: String): Movie? = viewModel.getMovieById(id)
+
+    fun getSerieInfoById(id:String): Serie? = viewModel.getSerieById(id)
 
     fun setImageURLByUrl(image: ImageView, url:String){
             Picasso.get().load(Constants.imageBaseUrl+url).into(image)

@@ -20,12 +20,13 @@ import com.matheusxreis.globoplay.data.repositories.MoviesRepository
 import com.matheusxreis.globoplay.data.services.MoviesService
 import com.matheusxreis.globoplay.ui.viewmodels.MainActivityViewModel
 import com.matheusxreis.globoplay.ui.views.adapters.MovieAdapter
-
+import com.matheusxreis.globoplay.ui.views.adapters.SerieAdapter
 
 
 class MainFragment : Fragment() {
 
     lateinit var movieAdapter: MovieAdapter;
+    lateinit var serieAdapter: SerieAdapter;
     val viewModel: MainActivityViewModel by activityViewModels()
 
 
@@ -64,6 +65,11 @@ class MainFragment : Fragment() {
 
 
         };
+        this.serieAdapter = SerieAdapter{
+            val action = MainFragmentDirections.actionMainFragmentToAboutFragment(it)
+            Navigation.findNavController(view).navigate(action);
+
+        }
 
         val recyclerMovie: RecyclerView = view.findViewById(R.id.movie_list)
         recyclerMovie.apply {
@@ -76,7 +82,7 @@ class MainFragment : Fragment() {
 
         recyclerSerie.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = movieAdapter
+            adapter = serieAdapter
         }
     }
 
@@ -92,9 +98,10 @@ class MainFragment : Fragment() {
             movieAdapter.notifyDataSetChanged()
         })
 
-//        viewModel.series.observe(viewLifecycleOwner, Observer {
-//
-//        })
+        viewModel.series.observe(viewLifecycleOwner, Observer {
+            Log.d("ESTOU OBSERVANDO", it.toString())
+            serieAdapter.setItems(it)
+        })
 
     }
 
