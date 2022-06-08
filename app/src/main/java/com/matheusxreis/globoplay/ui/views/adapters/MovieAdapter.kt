@@ -1,24 +1,16 @@
 package com.matheusxreis.globoplay.ui.views.adapters
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
 import androidx.core.widget.ContentLoadingProgressBar
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.data.utils.Constants
 import com.squareup.picasso.Picasso
-import java.net.URL
 
 class MovieAdapter(val onImageClick: (id:String)->Unit?):RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

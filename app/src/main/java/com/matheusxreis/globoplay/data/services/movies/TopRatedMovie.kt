@@ -1,4 +1,4 @@
-package com.matheusxreis.globoplay.data.entities
+package com.matheusxreis.globoplay.data.services.movies
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,5 +8,5 @@ data class TopRatedMovie(
      val page: Number,
 
     @SerializedName("results")
-     val results: List<Movie>
+     val results: List<MovieServiceEntity>
 )

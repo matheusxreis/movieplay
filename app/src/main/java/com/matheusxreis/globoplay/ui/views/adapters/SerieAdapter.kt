@@ -1,6 +1,5 @@
 package com.matheusxreis.globoplay.ui.views.adapters
 
-import android.provider.ContactsContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +9,7 @@ import androidx.core.widget.ContentLoadingProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Serie
+import com.matheusxreis.globoplay.data.services.series.SerieServiceEntity
 import com.matheusxreis.globoplay.data.utils.Constants
 import com.squareup.picasso.Picasso
 

@@ -1,9 +1,6 @@
 package com.matheusxreis.globoplay.ui.views
 
-import android.graphics.BlurMaskFilter
-import android.media.Image
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,22 +9,19 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavArgs
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.button.MaterialButton
 import com.matheusxreis.globoplay.R
 import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.data.entities.Serie
+import com.matheusxreis.globoplay.data.services.series.SerieServiceEntity
 import com.matheusxreis.globoplay.data.repositories.MoviesRepository
-import com.matheusxreis.globoplay.data.services.MoviesService
 import com.matheusxreis.globoplay.data.utils.Constants
 import com.matheusxreis.globoplay.ui.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
 import jp.wasabeef.picasso.transformations.BlurTransformation
-import org.w3c.dom.Text
 
 
 class AboutFragment : Fragment() {
@@ -73,7 +67,7 @@ class AboutFragment : Fragment() {
 
         var movieId = args.movieId
 
-        val movie:Movie? = getMovieInfoById(movieId)
+        val movie: Movie? = getMovieInfoById(movieId)
         val serie: Serie? = getSerieInfoById(movieId)
 
         if(movie != null){
@@ -131,16 +125,16 @@ class AboutFragment : Fragment() {
         Log.d("kokokook", "OOOOOOI")
     }
 
-    fun setMovieData(movie:Movie,
-    image: ImageView,
-    imageBg:ImageView,
-    titleMovie:TextView,
-    genMovie:TextView,
-    description:TextView,
-    textOriginalTitle:TextView,
-    textGens:TextView,
-    textProductionYear:TextView,
-    textCountry:TextView){
+    fun setMovieData(movie: Movie,
+                     image: ImageView,
+                     imageBg:ImageView,
+                     titleMovie:TextView,
+                     genMovie:TextView,
+                     description:TextView,
+                     textOriginalTitle:TextView,
+                     textGens:TextView,
+                     textProductionYear:TextView,
+                     textCountry:TextView){
         setImageURLByUrl(image, movie.urlImage)
         //  setImageURLByUrl(imageBg, movie.urlImage)
         setImageBlurByUrl(movie.urlImage, imageBg)
@@ -154,7 +148,7 @@ class AboutFragment : Fragment() {
         textCountry.text = movie.title
     }
 
-    fun setSerieData(serie:Serie,
+    fun setSerieData(serie: Serie,
                      image: ImageView,
                      imageBg:ImageView,
                      titleMovie:TextView,

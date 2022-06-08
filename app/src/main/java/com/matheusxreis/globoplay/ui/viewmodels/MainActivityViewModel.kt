@@ -1,18 +1,14 @@
 package com.matheusxreis.globoplay.ui.viewmodels
 
-import android.mtp.MtpConstants
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.matheusxreis.globoplay.data.dtos.MovieDTO
 import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.data.entities.Serie
-import com.matheusxreis.globoplay.data.entities.TopRatedMovie
+import com.matheusxreis.globoplay.data.services.series.SerieServiceEntity
 import com.matheusxreis.globoplay.data.repositories.MoviesRepository
 import com.matheusxreis.globoplay.data.repositories.SeriesRepository
-import com.matheusxreis.globoplay.data.services.MoviesService
 import kotlinx.coroutines.launch
 
 class MainActivityViewModel():ViewModel() {
@@ -28,17 +24,15 @@ class MainActivityViewModel():ViewModel() {
 
     public fun fetchMovies() {
         viewModelScope.launch {
-            val response: TopRatedMovie = moviesRepository.getMovies();
+            val response: List<Movie> = moviesRepository.getMovies();
 
-            Log.d("HERE", response.results[0].urlImage.toString())
-
-            movies.value = response.results
+            movies.value = response
         };
     }
 
     public fun fetchSeries(){
         viewModelScope.launch {
-            val response = seriesRepository.getSeries();
+            val response:List<Serie> = seriesRepository.getSeries();
             series.value = response
         }
     }
@@ -47,18 +41,18 @@ class MainActivityViewModel():ViewModel() {
     public fun getMovieById(id: String): Movie? {
         Log.d("MOVIE_id", id)
     return movies.value?.find { it -> it.id === id};
-    //return moviesRepository.getMovieById(id)
+
     }
 
     public fun likeMovie(id:String){
-        var movie = movies.value?.find { it -> it.id === id};
-
-        liked.add(movie as Movie)
-        likedMovies.postValue(liked)
+//        var movie = movies.value?.find { it -> it.id === id};
+//
+//        liked.add(movie as Movie)
+//        likedMovies.postValue(liked)
 
         }
 
-    public fun getSerieById(id: String):Serie? {
+    public fun getSerieById(id: String): Serie? {
         return series.value?.find { it -> it.id === id};
     }
 }

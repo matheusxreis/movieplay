@@ -1,7 +1,6 @@
 package com.matheusxreis.globoplay.ui.views
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheusxreis.globoplay.R
-import com.matheusxreis.globoplay.data.entities.Movie
 import com.matheusxreis.globoplay.ui.viewmodels.MainActivityViewModel
 import com.matheusxreis.globoplay.ui.views.adapters.MovieAdapter
 

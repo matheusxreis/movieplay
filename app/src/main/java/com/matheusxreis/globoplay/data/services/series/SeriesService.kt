@@ -1,6 +1,5 @@
-package com.matheusxreis.globoplay.data.services
+package com.matheusxreis.globoplay.data.services.series
 
-import com.matheusxreis.globoplay.data.entities.TopRatedSerie
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,5 +10,5 @@ interface SeriesService {
         @Query("api_key") apikey:String,
         @Query("language") language: String,
         @Query("page") page: String
-    ):TopRatedSerie
+    ): TopRatedSerie
 }
