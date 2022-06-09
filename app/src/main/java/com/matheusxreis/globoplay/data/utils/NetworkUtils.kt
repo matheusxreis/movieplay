@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkUtils(path:String) {
 
      var  retrofit = Retrofit.Builder()
-            .baseUrl(path)
+            .baseUrl(Constants.baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 
